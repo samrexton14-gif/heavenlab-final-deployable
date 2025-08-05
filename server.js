@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -39,7 +40,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Auth routes
-app.post('/api/login', async (req, res) => {
+app.post('https://heavenlab-backend.onrender.com/api/login', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ success: false, message: 'Missing credentials' });
 
@@ -71,6 +72,6 @@ app.post('/api/upload', upload.single('video'), async (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+app.listen(PORT:10000, () => {
+  console.log(`🚀 Server running at https://heaven-rru0.onrender.com:${PORT:10000}`);
 });
