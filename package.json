@@ -1,0 +1,14 @@
+{
+  "name": "heavenlab-backend",
+  "version": "1.0.0",
+  "description": "Backend for HEAVEN Lab photo app with user auth, video upload, and MongoDB integration.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.6.1",
+    "multer": "^1.4.5"
+  }
+}

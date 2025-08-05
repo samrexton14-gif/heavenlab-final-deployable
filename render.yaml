@@ -1,0 +1,11 @@
+
+services:
+  - type: web
+    name: heavenlab-server
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    plan: free
+    envVars:
+      - key: MONGO_URI
+        value: your_mongodb_uri_here
