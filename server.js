@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -16,6 +15,7 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB Error:', err));
 
+// Schemas
 const UserSchema = new mongoose.Schema({ email: String, password: String });
 const ReelSchema = new mongoose.Schema({ title: String, filename: String, created: { type: Date, default: Date.now } });
 const User = mongoose.model('User', UserSchema);
@@ -39,8 +39,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// Auth routes
-app.post('https://heavenlab-backend.onrender.com/api/login', async (req, res) => {
+// Login route
+app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ success: false, message: 'Missing credentials' });
 
@@ -49,6 +49,7 @@ app.post('https://heavenlab-backend.onrender.com/api/login', async (req, res) =>
   return res.status(401).json({ success: false, message: 'Invalid email or password' });
 });
 
+// Register route
 app.post('/api/register', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ success: false, message: 'Missing credentials' });
@@ -72,6 +73,6 @@ app.post('/api/upload', upload.single('video'), async (req, res) => {
 });
 
 // Start server
-app.listen(PORT:10000, () => {
-  console.log(`🚀 Server running at https://heaven-rru0.onrender.com:${PORT:10000}`);
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
